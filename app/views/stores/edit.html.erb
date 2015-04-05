@@ -1,0 +1,24 @@
+<h1> Edit Store/file Information </h1>
+
+<%= form_for(@store) do |f| %>
+  <div class="field">
+    <%= f.label :filename %> <br/>
+    <%= f.text_field :filename %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %> <br/>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :private %>
+    <%= f.radio_button :public, false%>
+    <%= f.label :public %>
+    <%= f.radio_button :public, true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update!!" %>
+  </div>
+<% end %>

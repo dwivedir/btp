@@ -1,0 +1,33 @@
+<h1>All Files</h1>
+
+
+<ul>
+  <% @stores.each do |store| %>
+    <li> <%= link_to "#{store.filename}", store %> </li>
+  <% end %>
+</ul>
+
+<% if @stores.size == 0 %>
+  <%= "no files available" %>
+<% end %>
+<div class="form">
+  <h1> Upload your file </h1>
+  <%= form_for(@store, :url => upload_path) do |f|%>
+    <div class="field">
+      <%= f.label :file %> 
+      <%= f.file_field :file %>
+    </div>
+    <div class="field">
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    <div class="field">
+      <%= f.label :private %>
+      <%= f.radio_button :public, false %>
+      <%= f.label :public %>
+      <%= f.radio_button :public, true %>
+    </div>
+    <div class="actions">
+    <%= f.submit "Upload" %>
+    </div>
+  <% end %>
+</div>

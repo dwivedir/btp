@@ -1,0 +1,21 @@
+<h1> File/Store Information </h1>
+<div class="info">
+  <h2> Filename: <%= @store.filename %> </h2>
+  <h2> Location: <%= @store.location %> </h2>
+  <h3> Public  : <%= @store.public %> </h2>
+</div>
+
+<div class="links">
+  <tr>
+    <td>
+      <%= link_to "edit", edit_store_path(@store) %>
+    </td>
+    <td>
+      <%= link_to "delete",store_path(@store), method: :delete %>
+    </td>
+    <td>
+      <%= link_to "download", download_path(@store) %>
+    </td>
+  </tr>
+</div>
+
