@@ -4,6 +4,7 @@ class CreateStores < ActiveRecord::Migration
       t.boolean :public
       t.string :filename
       t.string :location
+      t.integer :user_id
 
       t.timestamps
     end

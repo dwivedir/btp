@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
-  resources :stores
-  root 'stores#index'
-  post 'upload' => 'stores#upload'
-  get  'download/:id' => 'stores#download', as: :download
+
+  resources :users
+  resources :stores , except: :create
+  root  'pages#home'
+  post   'upload'       => 'stores#upload'
+  get    'download/:id' => 'stores#download', as: :download
+  get    '/contact'     =>  'pages#contact'
+  get    '/about'       =>  'pages#about'
+  get    '/help'        =>  'pages#help'
+  get    '/signup'      =>  'users#new'
+  get    '/login'       =>  'sessions#new'
+  post   '/login'       =>  'sessions#create'
+  get    '/logout'      =>  'sessions#destroy'
+  get    '/search'      =>  'engine#index'
+  post   '/search'      =>  'engine#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

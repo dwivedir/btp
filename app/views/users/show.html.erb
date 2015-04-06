@@ -1,0 +1,17 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @user.name %>
+      </h1>
+      <br/>
+      <% @user.stores.each do |store| %>
+        <h5><%= link_to store.filename, store_path(store) %></h5>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong>  <%= link_to user_path(@user), user_path(@user) %>
+    </td>
+  </tr>
+</table>

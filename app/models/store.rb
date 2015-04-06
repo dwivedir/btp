@@ -12,13 +12,25 @@
 
 require 'fileutils'
 class Store < ActiveRecord::Base
-
+  belongs_to :user
   @@home = "#{Rails.root}/public/data"
+
+  def self.empty_dir(local_dir)   # local directory is like "/1/home"
+    local_dir = File.join(@@home, local_dir)
+    if File.directory? local_dir
+      FileUtils.rm_rf(Dir.glob("#{local_dir}/*"))
+    end
+  end
 
   def self.make_dir(local_dir)
     if !File.directory? local_dir
       FileUtils::mkdir_p local_dir
     end
+  end
+
+  def self.make_local_dir(dir)
+    local_dir = File.join(@@home, dir)
+    make_dir(local_dir)
   end
 
   def self.move(filename, pre_dest, next_dest)

@@ -3,7 +3,9 @@
 
 <ul>
   <% @stores.each do |store| %>
-    <li> <%= link_to "#{store.filename}", store %> </li>
+    <% if (store.public) %>
+      <li> <%= link_to "#{store.filename}", store %> </li>
+    <%end%>
   <% end %>
 </ul>
 
@@ -16,10 +18,11 @@
     <div class="field">
       <%= f.label :file %> 
       <%= f.file_field :file %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
     <div class="field">
       <%= f.label :location %>
-      <%= f.text_field :location %>
+      <%= f.text_field :location , :value => "/#{current_user.id}/"%>
     <div class="field">
       <%= f.label :private %>
       <%= f.radio_button :public, false %>
