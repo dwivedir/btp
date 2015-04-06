@@ -195,3 +195,9 @@ ul.users li {
 .links {
   padding: 7px;
 }
+
+.form {
+  width: 400px;
+  margin-top: 10px;
+  padding: 1em;
+}

@@ -1,0 +1,23 @@
+<div class="Profile" summary="Profile Information">
+  <h1> Search Files </h1>
+  <div class="form">
+    <%= form_for(:key_word, :url => search_path) do |f| %>
+      <td>
+        <div class="fields">
+          <%= f.text_field  :key , :value => @key_word %>
+        </div>
+      </td>
+      <td>
+        <div class="actions">
+          <%= f.submit "Search!" %>
+        </div>
+      </td>
+    <% end %>
+  </div>
+  <br/>
+  <div class="results">
+    <% @results.each do |result| %>
+      <%= link_to result.filename, store_path(result)  if result.public%><br/>
+    <% end %>
+  </div>
+</div>
