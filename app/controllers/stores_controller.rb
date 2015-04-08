@@ -19,7 +19,7 @@ class StoresController < ApplicationController
 
   def update
     @store = Store.where(id: params[:id]).first
-
+    @tag = Tag.new
     if @store.filename != params[:store][:filename]
       Store.rename(@store.filename, params[:store][:filename], @store.location)
     end
