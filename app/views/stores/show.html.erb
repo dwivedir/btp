@@ -19,3 +19,27 @@
   </tr>
 </div>
 
+<div class="tags">
+  <h5> tags for this file </h5>
+  <% @store.tags.each do |tag| %>
+    <ul>
+      <%= link_to tag.name, tag_path(tag), :file => @store %>
+      <%= link_to "remove tag", tag_path(tag, :file => @store.id), method: :delete %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="form">
+  <h5> add a tag to this file </h5>
+  <%= form_for(@tag) do |f| %>
+    <div class="fields">
+      <%= f.text_field :name %>
+      <%= f.hidden_field :file, :value => @store.id %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "add tag!!" %>
+    </div>
+  <% end %>
+</div>
+

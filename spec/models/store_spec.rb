@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: stores
+#
+#  id         :integer          not null, primary key
+#  public     :boolean
+#  filename   :string(255)
+#  location   :string(255)
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe Store, :type => :model do

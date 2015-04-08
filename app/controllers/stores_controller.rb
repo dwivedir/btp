@@ -10,6 +10,7 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.where(id: params[:id]).first
+    @tag = Tag.new
   end
 
   def edit

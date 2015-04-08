@@ -6,6 +6,7 @@
 #  public     :boolean
 #  filename   :string(255)
 #  location   :string(255)
+#  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
@@ -13,6 +14,7 @@
 require 'fileutils'
 class Store < ActiveRecord::Base
   belongs_to :user
+  has_and_belongs_to_many :tags
   @@home = "#{Rails.root}/public/data"
 
   def self.empty_dir(local_dir)   # local directory is like "/1/home"
